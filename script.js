@@ -21,7 +21,7 @@ window.addEventListener('scroll', function() {
 // 游戏按钮点击事件
 document.getElementById('startGame').addEventListener('click', function() {
     // 这里替换为你的游戏URL
-    window.location.href = 'game.html';
+    window.location.href = '/Electronic-music/game.html';
 });
 
 // 添加页面加载动画效果
