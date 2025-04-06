@@ -48,7 +48,7 @@ body {
     /* 添加 padding 来扩大可点击区域 */
     padding: 1rem 2rem;
     /* 添加块级特性使 padding 生效 */
-    display: inline-block;
+    display: inline;
     /* 添加圆角效果让悬停区域更明显 */
     border-radius: 0.5rem;
 }
