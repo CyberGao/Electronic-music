@@ -166,13 +166,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* 乐器标题样式 */
-.artist-works h4 {
-    font-size: 5rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
 /* 乐器信息样式 */
 .instrument-info {
     flex-grow: 1;
@@ -183,7 +176,7 @@ body {
 }
 
 .inventor, .feature {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #ffffff;
     line-height: 1.4;
 }
