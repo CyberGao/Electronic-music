@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>木琴演奏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🎵 点击琴键或按键盘演奏 🎹</h1>
+    <br>
+    <h2>按Shift和Control键来调整音调</h2>
+    <div class="xylophone">
+        <div class="key" id="C" data-key="C">do(a)</div>
+        <div class="key" id="D" data-key="D">re(s)</div>
+        <div class="key" id="E" data-key="E">mi(d)</div>
+        <div class="key" id="F" data-key="F">fa(j)</div>
+        <div class="key" id="G" data-key="G">sol(k)</div>
+        <div class="key" id="A" data-key="A">la(l)</div>
+        <div class="key" id="B" data-key="B">si(;)</div>
+    </div>
+    <br><br>
+    <button id="record-btn">🎤 录制</button>
+    <span id="record-time">00:00</span>
+    <a id="download-link" style="display: none"></a>
+    
+
+    <script src="xylo.js"></script>
+</body>
+</html>

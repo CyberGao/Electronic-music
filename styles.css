@@ -10,7 +10,7 @@ body {
     line-height: 1.8;
     background-color: #121212;
     color: #ffffff;
-    font-size: 18px; /* 增大基础字体大小 */
+    font-size: 16px; /* 增大基础字体大小 */
     width: 100%;
 }
 
@@ -20,7 +20,8 @@ body {
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 2.5rem 0; /* 增加padding */
+    padding: 2rem 0; /* 增加padding */
+    z-index: 1000; /* 确保导航栏在最上层 */
 }
 
 .nav-container {
@@ -34,22 +35,40 @@ body {
 
 .logo {
     color: #00ff88;
-    font-size: 2rem; /* 增大logo字体 */
+    font-size: 8rem; /* 增大logo字体 */
 }
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
     margin-left: 2rem;
-    font-size: 2rem; /* 增大导航链接字体 */
-    transition: color 0.3s ease;
+    font-size: 5rem;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    /* 添加 padding 来扩大可点击区域 */
+    padding: 1rem 2rem;
+    /* 添加块级特性使 padding 生效 */
+    display: inline-block;
+    /* 添加圆角效果让悬停区域更明显 */
+    border-radius: 0.5rem;
+}
+
+.nav-links a:hover {
+    color: #00ff88;
+    font-size: 4rem;
+    /* 可以添加背景色让悬停区域更明显 */
+    background-color: rgba(0, 255, 136, 0.1);
+}
+
+/* 为了防止导航栏遮挡内容 */
+body {
+    padding-top: 10rem; /* 确保内容不被导航栏遮挡 */
 }
 
 /* 主页横幅样式修改 */
 .hero {
-    height: 100vh;
+    height: 95vh;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/Electronic-music/images/hero-bg.jpg'); /* 修改图片路径 */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/hero-bg.jpg'); /* 修改图片路径 */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -59,14 +78,22 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 2rem; /* 增大标题字体 */
+    font-size: 10rem;
     margin-bottom: 2rem;
     color: #00ff88;
+    /* 标题从左上角飞入 */
+    animation: flyInTitle 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    /* 初始状态设为不可见 */
+    opacity: 0;
 }
 
 .hero-content p {
-    font-size: 1.5rem; /* 增大描述文字字体 */
+    font-size: 8rem;
     color: #ffffff;
+    /* 描述文字从右下角飞入 */
+    animation: flyInDesc 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    /* 初始状态设为不可见 */
+    opacity: 0;
 }
 
 /* 章节通用样式修改 */
@@ -80,126 +107,521 @@ body {
     text-align: center;
     color: #00ff88;
     margin-bottom: 3rem;
-    font-size: 2rem; /* 增大标题字体 */
+    font-size: 8rem; /* 增大标题字体 */
 }
 
 /* 文本内容样式 */
-.text-content p {
-    font-size: 1.5rem; /* 增大正文字体 */
-    margin-bottom: 1.5rem;
+
+.section p {
+    font-size: 5rem; /* 从4rem增加到6rem */
+    color: #ffffff;
+    margin-bottom: 3rem;
+    line-height: 1.8; /* 增加行高，提高可读性 */
     text-align: justify;
-    line-height: 1.8;
+    letter-spacing: 0.1rem; /* 添加字间距 */
 }
 
-/* 乐器展示部分标题样式 */
-.instrument-showcase h3 {
-    font-size: 2rem;  /* 设置标题大小 */
-    color: #00ff88;     /* 使用主题色 */
-    text-align: center;  /* 居中对齐 */
-    margin-bottom: 2rem; /* 与下方内容保持间距 */
-    font-weight: bold;   /* 加粗 */
+/* 乐器展示标题 */
+#instrument-showcase h3 {
+    text-align: center;
+    color: #00ff88;
+    margin-bottom: 3rem;
+    font-size: 8rem;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
 }
 
 /* 乐器展示容器样式 */
 .instruments {
-    display: flex;  /* 使用flex布局 */
-    justify-content: space-between;  /* 均匀分布 */
-    gap: 2rem;  /* 设置间距 */
+    display: grid; /* 改用grid布局以更好地适应6个项目 */
+    grid-template-columns: repeat(3, 1fr); /* 3列布局 */
+    gap: 2rem;
     width: 100%;
-    margin: 2rem 0;  /* 上下外边距 */
+    margin: 2rem 0;
+    padding: 0 2rem;
 }
 
 /* 单个乐器卡片样式 */
 .instrument {
-    flex: 1;  /* 平均分配宽度 */
     text-align: center;
     background-color: #1e1e1e;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 10px;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 1200px; /* 调整高度 */
+}
+
+.instrument:hover {
+    transform: translateY(-10px);
 }
 
 /* 乐器图片样式 */
 .instrument img {
     width: 100%;
-    height: 400px;  /* 统一高度 */
-    object-fit: contain;  /* 保持图片比例 */
+    height: 800px;
+    object-fit: contain;
     border-radius: 5px;
-    margin-bottom: 1rem;
-}
-
-/* 乐器标题样式 */
-.instrument h4 {
-    font-size: 2rem;
-    margin-top: 1rem;
-    color: #00ff88;  /* 使用主题色 */
-}
-
-/* 添加悬停效果 */
-.instrument:hover {
-    transform: translateY(-10px);  /* 悬停时向上浮动 */
-}
-
-
-/* 代表作品样式修改 */
-.masterpiece-card {
-    background-color: #1e1e1e;
-    padding: 2rem;
-    border-radius: 10px;
-}
-
-.masterpiece-card h3 {
-    font-size: 2rem; /* 增大标题字体 */
-    margin: 1rem 0;
-}
-
-.masterpiece-card p {
-    font-size: 1.5rem; /* 增大描述文字字体 */
-}
-
-.masterpiece-card img {
-    width: 100%;
-    height: auto;    /* 改为auto */
-    max-height: 400px;    /* 设置最大高度 */
-    object-fit: contain;    /* 改为contain */
-    border-radius: 5px;
-}
-
-/* 艺术家样式修改 */
-.artist-card h3 {
-    font-size: 2rem; /* 增大艺术家名字字体 */
-    margin: 1rem 0;
-}
-
-.artist-card p {
-    font-size: 1.5rem; /* 增大描述文字字体 */
-}
-
-/* 艺术家样式修改 */
-.artist-card img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;    /* 保持cover，因为这是圆形头像 */
-    border-radius: 50%;
-    margin: 0 auto;
-    display: block;    /* 确保图片居中 */
-}
-
-/* 游戏部分样式修改 */
-.game-container {
-    width: 100%;
-    text-align: center;
-    padding: 4rem;
-}
-
-.game-container p {
-    font-size: 1.5rem; /* 增大文字大小 */
     margin-bottom: 2rem;
 }
 
-.game-start-btn {
-    font-size: 1.5rem; /* 增大按钮文字 */
-    padding: 1.5rem 3rem;
+/* 乐器标题样式 */
+.artist-works h4 {
+    font-size: 5rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* 乐器信息样式 */
+.instrument-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.inventor, .feature {
+    font-size: 3rem;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+.inventor {
+    color: #00ff88;
+}
+
+/* 艺术家部分的新样式 */
+.artists-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* 确保纵向排列 */
+    gap: 6rem; /* 增加歌手板块之间的间距 */
+    padding: 2rem; /* 添加内边距 */
+}
+
+.artist-row {
+    display: flex;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 15px;
+    padding: 4rem;
+    gap: 4rem;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+    min-height: 800px;
+    margin-bottom: 4rem; /* 添加底部间距 */
+}
+
+.artist-row:hover {
+    transform: translateX(10px);
+}
+
+/* 艺术家图片样式 */
+.artist-image {
+    flex: 0 0 400px; /* 增加图片区域宽度 */
+}
+
+.artist-image img {
+    width: 800px; /* 增加图片尺寸 */
+    height: 800px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+/* 艺术家信息样式 */
+.artist-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem; /* 增加信息间距 */
+}
+
+.artist-name {
+    font-size: 6rem; /* 增大艺术家名字 */
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    margin-bottom: 2rem;
+}
+
+.artist-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.artist-details p {
+    font-size: 4rem; /* 增大详情文字 */
+    margin: 0;
+    line-height: 1.4;
+}
+
+.artist-details span {
+    color: #00ff88;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+/* 代表作品样式 */
+/* 代表作品区域样式 */
+.artist-works {
+    flex: 1;
+    padding-left: 2rem;  /* 减小左内边距 */
+    margin-left: -80rem;  /* 添加负边距将整个区域向左移动 */
+    border-left: 4px solid #00ff88;  /* 这是那条绿色竖线 */
+    box-shadow: -5px 0 15px rgba(0, 255, 136, 0.2);  /* 可选：添加发光效果 */
+}
+
+/* 如果需要调整作品区域内容的位置 */
+.artist-works h4 {
+    margin-left: 2rem;  /* 标题距离竖线的距离 */
+}
+
+.music-player-container {
+    margin-left: 2rem;  /* 播放器距离竖线的距离 */
+}
+
+.artist-works ul {
+    list-style: none;
+    padding: 0;
+}
+
+.artist-works li {
+    margin: 2rem 0;
+    font-size: 4rem; /* 增大列表项字体 */
+}
+
+
+/* 游戏部分样式修改 */
+/* 视频部分整体样式 */
+#interactive {
+    padding: 6rem 0;
+    width: 100%;
+    min-height: 40vh; /* 确保占满屏幕高度 */
+}
+
+#interactive h2 {
+    text-align: center;
+    color: #00ff88;
+    font-size: 8rem;
+    margin-bottom: 6rem;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+/* 视频容器样式 */
+.video-container {
+    display: flex;
+    justify-content: center;
+    gap: 10rem; /* 增加间距 */
+    padding: 0 6rem;
+    width: 100%;
+    max-width: 2400px; /* 增加最大宽度 */
+    margin: 0 auto;
+    height: 30vh; /* 设置为视窗高度的80% */
+}
+
+/* 视频卡片样式 */
+.video-card {
+    flex: 1;
+    position: relative;
+    border-radius: 30px; /* 增加圆角 */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 1800px; /* 设置最小宽度 */
+    height: 100%; /* 占满容器高度 */
+}
+
+.video-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 50px rgba(0, 255, 136, 0.4);
+}
+
+/* 背景视频样式 */
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* 视频遮罩层样式 */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem; /* 增加内边距 */
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+/* 视频标题和描述文字样式 */
+.video-overlay h3 {
+    font-size: 7rem; /* 增大标题字体 */
+    color: #00ff88;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.video-overlay p {
+    font-size: 4rem; /* 增大描述字体 */
+    color: white;
+    opacity: 0.9;
+}
+
+/* 音乐播放器样式 */
+.music-player-container {
+    margin-top: 3rem;
+}
+
+.song-list {
+    list-style: none;
+    padding: 0;
+}
+
+.song-list li {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    min-height: 100px; /* 增加高度 */
+}
+
+.song-list li:hover {
+    background: rgba(0, 255, 136, 0.1);
+    transform: translateX(10px); /* 添加悬停效果 */
+}
+
+.play-btn {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: #fff;
+    text-decoration: none;
+    flex: 1;
+    min-width: 400px; /* 确保标题有足够空间 */
+}
+
+
+.play-icon {
+    width: 60px; /* 增大播放按钮 */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #00ff88;
+    color: #121212;
+    font-size: 3rem; /* 增大图标大小 */
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5); /* 添加发光效果 */
+}
+
+.song-title {
+    font-size: 4rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    white-space: nowrap; /* 防止标题换行 */
+    overflow: hidden; /* 防止溢出 */
+    text-overflow: ellipsis; /* 文字过长显示省略号 */
+}
+
+.progress-bar {
+    flex: 2;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin: 0 1rem 0 6rem; /* 增加左边距到20rem，推动进度条更右边 */
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    min-width: 300px; /* 减小最小宽度，给标题留出更多空间 */
+    max-width: 600px; /* 添加最大宽度限制 */
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #00ff88;
+    border-radius: 12px;
+    width: 0;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+}
+
+.time {
+    color: #fff;
+    font-size: 3rem; /* 增大时间显示 */
+    min-width: 120px;
+    text-align: right;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* 播放状态样式 */
+.playing .play-icon {
+    background: #ff0088;
+    box-shadow: 0 0 15px rgba(255, 0, 136, 0.5);
+}
+
+.playing .play-icon::before {
+    content: "⏸";
+}
+/*时间线*/
+.timeline-section {
+    padding: 4rem;
+    position: relative;
+}
+
+.timeline-title {
+    font-size: 4rem;
+    color: #00ff88;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    max-width: 4000px;
+    margin: 0 auto;
+}
+
+/* 时间线垂直线 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: #00ff88;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.timeline-item {
+    padding: 2rem 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.timeline-content {
+    position: relative;
+    width: 70%;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    border: 2px solid #00ff88;
+    font-size: 4rem;
+    color: #ffffff;
+}
+
+/* 修改左右交替布局，增加与时间轴的距离 */
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 55%; /* 增加右边距，让左边的框更靠左 */
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 55%; /* 增加左边距，让右边的框更靠右 */
+}
+
+/* 添加连接线，连接内容框和时间点 */
+.timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    right: -11%;
+    top: 1.5rem;
+    width: 11%;
+    height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    content: '';
+    position: absolute;
+    left: -11%;
+    top: 1.5rem;
+    width: 11%;
+    height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* 时间点圆圈 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #00ff88;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3rem;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+}
+
+/* 其他样式保持不变 */
+.period-title {
+    color: #00ff88;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-content li {
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline-content li::before {
+    content: '•';
+    color: #00ff88;
+    position: absolute;
+    left: 0;
+}
+
+/* 页脚样式 */
+footer {
+    width: 100%;
+    padding: 3rem 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    text-align: center;
+    margin-top: 6rem;
+    border-top: 2px solid rgba(0, 255, 136, 0.3);
+}
+
+footer p {
+    font-family: 'Arial', sans-serif; /* 可以换成其他现代字体 */
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
 
 /* 响应式设计修改 */
@@ -227,5 +649,64 @@ body {
     
     .section {
         width: 95%; /* 移动端增加内容宽度 */
+    }
+
+    .artist-name {
+        font-size: 2rem;
+    }
+
+    .artist-details p {
+        font-size: 1rem;
+    }
+
+    .artist-image img {
+        width: 150px;
+        height: 150px;
+    }
+}
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .artist-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .artist-image {
+        flex: none;
+    }
+
+    .artist-works {
+        border-left: none;
+        border-top: 2px solid #00ff88;
+        padding: 1rem 0 0 0;
+        width: 100%;
+    }
+
+    .artist-details p {
+        text-align: left;
+    }
+}
+
+@keyframes flyInTitle {
+    0% {
+        transform: translate(-100vw, -100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes flyInDesc {
+    0% {
+        transform: translate(100vw, 100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
     }
 }

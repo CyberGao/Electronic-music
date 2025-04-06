@@ -1,0 +1,61 @@
+body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #fff;
+}
+
+h1 {
+    margin-top: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 让琴键随音调变化 */
+.xylophone {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 400px;
+    margin-top: 20px;
+    --key-height-scale: 1; /* 默认 1 倍高度 */
+}
+
+/* 琴键样式 */
+.key {
+    width: 80px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+    user-select: none;
+    position: relative;
+    height: calc(var(--key-height-scale) * 160px); /* 统一调整琴键高度 */
+}
+
+/* 琴键颜色和初始高度 */
+#C { background: #ff6666; --base-height: 160px; }
+#D { background: #ff9966; --base-height: 180px; }
+#E { background: #ffcc66; --base-height: 200px; }
+#F { background: #99cc66; --base-height: 220px; }
+#G { background: #66cccc; --base-height: 240px; }
+#A { background: #6699cc; --base-height: 260px; }
+#B { background: #9966cc; --base-height: 280px; }
+
+/* 让每个琴键继承基本高度，并调整 */
+.key {
+    height: calc(var(--key-height-scale) * var(--base-height));
+}
+
+/* 按下琴键的反馈效果 */
+.key:active, .playing {
+    transform: scale(0.9);
+    filter: brightness(1.2);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+}
+
