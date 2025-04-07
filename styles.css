@@ -130,10 +130,32 @@ body {
     text-align: center;
 }
 
+.background-container {
+    position: absolute;  /* 改为绝对定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;  /* 或者设置具体高度 */
+    z-index: -1;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('./images/b1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .timeline {
     position: relative;
-    max-width: 4000px;
-    margin: 0 auto;
+    max-width: 5000px;
+    padding: 2rem 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: cover;
+    background-position: center;
+    
+    
+    /* 添加动画 */
+    animation: switchBackground 24s infinite;
 }
 
 /*时间线垂直线*/
@@ -159,9 +181,10 @@ body {
 
 .timeline-content {
     position: relative;
-    width: 100%;
+    z-index: 2;
+    width: 120%;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 0.5rem;
     border: 1px solid #00ff88;
     font-size: 2rem;
@@ -182,9 +205,9 @@ body {
     content: '';
     position: absolute;
     right: -11%;
-    top: 1rem;
+    top: 1.2rem;
     width: 11%;
-    height: 2px;
+    height: 1px;
     background: #00ff88;
     box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
@@ -193,7 +216,7 @@ body {
     content: '';
     position: absolute;
     left: -11%;
-    top: 1rem;
+    top: 1.2rem;
     width: 11%;
     height: 2px;
     background: #00ff88;
@@ -213,10 +236,11 @@ body {
     top: 3rem;
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
 }
-
+/*标题字体大小*/
 .period-title {
     color: #00ff88;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -225,8 +249,9 @@ body {
     list-style: none;
     padding: 0;
 }
-
+/*内容字体大小*/
 .timeline-content li {
+    font-size: 1rem; 
     margin-bottom: 1rem;
     line-height: 1.4;
     position: relative;
@@ -240,50 +265,51 @@ body {
     left: 0;
 }
 /*||上面是时间线板块样式||*/
-
 /*||下面是经典乐器板块样式||*/
 /*乐器展示标题*/
+#instrument-showcase {
+    scroll-margin-top: 4rem;
+    padding-top: 3rem;
+}
 #instrument-showcase h3 {
     text-align: center;
     color: #00ff88;
-    margin-bottom: 3rem;
-    font-size: 8rem;
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    margin-bottom: 1rem;
+    font-size: 3rem; 
 }
 
-/* 乐器展示容器样式 */
+/*乐器展示容器样式*/
 .instruments {
     display: grid; /* 改用grid布局以更好地适应6个项目 */
     grid-template-columns: repeat(3, 1fr); /* 3列布局 */
-    gap: 2rem;
     width: 100%;
-    margin: 2rem 0;
-    padding: 0 2rem;
+    margin: 3rem 0;
+    gap: 2rem;
+    padding: 0 5rem;
 }
 
-/* 单个乐器卡片样式 */
+/*单个乐器卡片样式*/
 .instrument {
     text-align: center;
     background-color: #1e1e1e;
-    padding: 1rem;
+    padding: -10rem;
     border-radius: 10px;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 1200px; /* 调整高度 */
+    height: 500px; 
 }
 
 .instrument:hover {
     transform: translateY(-10px);
 }
 
-/* 乐器图片样式 */
+/*乐器图片样式*/
 .instrument img {
     width: 100%;
-    height: 800px;
+    height: 400px;
     object-fit: contain;
     border-radius: 5px;
-    margin-bottom: 2rem;
 }
 
 /* 乐器信息样式 */
@@ -296,7 +322,7 @@ body {
 }
 
 .inventor, .feature {
-    font-size: 3.5rem;
+    font-size: 1rem;
     color: #ffffff;
     line-height: 1.4;
 }
@@ -304,102 +330,102 @@ body {
 .inventor {
     color: #00ff88;
 }
-
-/* 艺术家部分的新样式 */
+/*||上面是经典乐器板块样式||*/
+/*||下面是著名音乐人板块样式||*/
+/*音乐人部分*/
 .artists-container {
-    width: 100%;
+    width: 200%;
     display: flex;
-    flex-direction: column; /* 确保纵向排列 */
-    gap: 6rem; /* 增加歌手板块之间的间距 */
-    padding: 2rem; /* 添加内边距 */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; 
+    transform: translateX(-10%); 
+    flex-direction: column; 
+    gap: 0.3rem; /*增加歌手板块之间的间距*/
 }
 
 .artist-row {
     display: flex;
     background: rgba(30, 30, 30, 0.9);
-    border-radius: 15px;
-    padding: 4rem;
-    gap: 4rem;
+    border-radius: 5px;
+    padding: 1rem;
+    gap: 1rem;
     align-items: flex-start;
     transition: transform 0.3s ease;
-    min-height: 800px;
-    margin-bottom: 4rem; /* 添加底部间距 */
+    margin-bottom: 1rem; /*添加底部间距*/
 }
 
 .artist-row:hover {
     transform: translateX(10px);
 }
 
-/* 艺术家图片样式 */
+/*音乐人图片样式*/
 .artist-image {
-    flex: 0 0 400px; /* 增加图片区域宽度 */
+    flex: 0 0 200px; 
 }
 
 .artist-image img {
-    width: 800px; /* 增加图片尺寸 */
-    height: 800px;
+    width: 300px; 
+    height: 200px;
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-/* 艺术家信息样式 */
+/*音乐人信息样式*/
 .artist-info {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2rem; /* 增加信息间距 */
+    gap: 0rem;
 }
 
 .artist-name {
-    font-size: 6rem; /* 增大艺术家名字 */
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    font-size: 2rem; 
+    color: #ffc14d;
+    text-shadow: 0 0 10px rgb(255, 119, 0);
     margin-bottom: 2rem;
 }
 
 .artist-details {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.3rem;
 }
 
 .artist-details p {
-    font-size: 4rem; /* 增大详情文字 */
+    font-size: 1.1rem; 
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.6;
 }
 
 .artist-details span {
-    color: #00ff88;
+    color: #ffc14d;
     font-weight: bold;
-    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
 
-/* 代表作品样式 */
-/* 代表作品区域样式 */
+/*代表作品样式*/
+/*代表作品区域样式*/
 .artist-works {
     flex: 1;
-    padding-left: 2rem;  /* 减小左内边距 */
-    margin-left: -80rem;  /* 添加负边距将整个区域向左移动 */
-    border-left: 4px solid #00ff88;  /* 这是那条绿色竖线 */
-    box-shadow: -5px 0 15px rgba(0, 255, 136, 0.2);  /* 可选：添加发光效果 */
+    padding-left: 0rem;  
+    margin-left: 0rem;  
+    border-left: 4px solid #ffc14d;  /*这是那条分割线*/
+    box-shadow: -5px 0 15px rgb(255, 119, 0);  
 }
 
-/* 如果需要调整作品区域内容的位置 */
+/*调整作品区域内容的位置*/
 .artist-works h4 {
-    font-size: 5rem;  /* 设置字体大小 */
-    color: #ffffff;   /* 设置颜色为霓虹绿 */
-    margin-bottom: 3rem;  /* 下方间距 */
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);  /* 霓虹发光效果 */
-    font-weight: 600;  /* 字体粗细 */
-    letter-spacing: 0.2rem;  /* 字间距 */
-    text-transform: uppercase;  /* 可选：转换为大写 */
-    font-family: 'Arial', sans-serif;  /* 字体家族 */
+    font-size: 1.5rem;  
+    color: #ffffff;   
+    margin-left: 0.5rem;
+    margin-bottom: 1rem; 
+    font-weight: 800;  
+    letter-spacing: 0.2rem;  
 }
 
 .music-player-container {
-    margin-left: 2rem;  /* 播放器距离竖线的距离 */
+    margin-left: 0rem;  
 }
 
 .artist-works ul {
@@ -409,12 +435,116 @@ body {
 
 .artist-works li {
     margin: 2rem 0;
-    font-size: 4rem; /* 增大列表项字体 */
+    font-size: 1rem; 
 }
 
+/*音乐播放器样式*/
+.music-player-container {
+    margin-top: 2.5rem;
+}
+
+.song-list {
+    list-style: none;
+    padding: 0;
+}
+
+.song-list li {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    max-height: 45px; 
+}
+
+.song-list li:hover {
+    background: rgba(255, 119, 0, 0.306);
+    transform: translateX(10px); 
+}
+
+.play-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    text-decoration: none;
+    flex: 1;
+    width: 100px;
+    min-width: auto;
+}
+
+
+.play-icon {
+    width: 30px; 
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffc14d;
+    color: #121212;
+    font-size: 1rem; 
+}  
+
+.song-title {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    white-space: nowrap; /*防止标题换行*/
+    overflow: hidden; /*防止溢出*/
+    text-overflow: ellipsis; /*文字过长显示省略号*/
+}
+
+.progress-bar {
+    flex: 0 0 100px; 
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 0; 
+    padding: 0; 
+    min-width: unset; 
+    max-width: unset;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #ffc14d;
+    border-radius: 12px;
+    width: 0;
+    box-shadow: 0 0 20px rgba(255, 119, 0, 0.306);
+}
+
+.time {
+    color: #fff;
+    font-size: 1rem;
+    width: 50px; 
+    text-align: right;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+}
+
+/*播放状态样式*/
+.playing .play-icon {
+    background: #ff0088;
+    box-shadow: 0 0 15px rgba(255, 0, 136, 0.5);
+}
+
+.playing .play-icon::before {
+    content: "⏸";
+}
+/*||上面是著名音乐人板块样式||*/
+/*||下面是互动游戏板块样式||*/
 /* 视频部分整体样式 */
 #interactive {
-    padding: 6rem 0;
+    padding: 3rem 0;
     width: 100%;
     min-height: 40vh; /* 确保占满屏幕高度 */
 }
@@ -422,19 +552,17 @@ body {
 #interactive h2 {
     text-align: center;
     color: #00ff88;
-    font-size: 8rem;
-    margin-bottom: 6rem;
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    font-size: 3rem;
+    margin-bottom: 3rem;
 }
-
 /* 视频容器样式 */
 .video-container {
     display: flex;
     justify-content: center;
-    gap: 10rem; /* 增加间距 */
-    padding: 0 6rem;
+    gap: 5rem; /* 增加间距 */
+    padding: 0 10rem;
     width: 100%;
-    max-width: 2400px; /* 增加最大宽度 */
+    max-width: 400px; /* 增加最大宽度 */
     margin: 0 auto;
     height: 30vh; /* 设置为视窗高度的80% */
 }
@@ -446,7 +574,7 @@ body {
     border-radius: 30px; /* 增加圆角 */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-width: 1800px; /* 设置最小宽度 */
+    min-width: 400px; /* 设置最小宽度 */
     height: 100%; /* 占满容器高度 */
 }
 
@@ -481,130 +609,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 4rem; /* 增加内边距 */
+    padding: 1rem; /* 增加内边距 */
     z-index: 2;
     transition: background 0.3s ease;
 }
 
 /* 视频标题和描述文字样式 */
 .video-overlay h3 {
-    font-size: 7rem; /* 增大标题字体 */
-    color: #00ff88;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    font-size: 2rem; /* 增大标题字体 */
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .video-overlay p {
-    font-size: 4rem; /* 增大描述字体 */
+    font-size: 1rem; /* 增大描述字体 */
+    margin-bottom: -0.3rem;
     color: white;
     opacity: 0.9;
 }
-
-/* 音乐播放器样式 */
-.music-player-container {
-    margin-top: 3rem;
-}
-
-.song-list {
-    list-style: none;
-    padding: 0;
-}
-
-.song-list li {
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    min-height: 100px; /* 增加高度 */
-}
-
-.song-list li:hover {
-    background: rgba(0, 255, 136, 0.1);
-    transform: translateX(10px); /* 添加悬停效果 */
-}
-
-.play-btn {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    color: #fff;
-    text-decoration: none;
-    flex: 1;
-    min-width: 400px; /* 确保标题有足够空间 */
-}
-
-
-.play-icon {
-    width: 60px; /* 增大播放按钮 */
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #00ff88;
-    color: #121212;
-    font-size: 3rem; /* 增大图标大小 */
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5); /* 添加发光效果 */
-}
-
-.song-title {
-    font-size: 4rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    white-space: nowrap; /* 防止标题换行 */
-    overflow: hidden; /* 防止溢出 */
-    text-overflow: ellipsis; /* 文字过长显示省略号 */
-}
-
-.progress-bar {
-    flex: 2;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    margin: 0 1rem 0 6rem; /* 增加左边距到20rem，推动进度条更右边 */
-    position: relative;
-    cursor: pointer;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-    min-width: 300px; /* 减小最小宽度，给标题留出更多空间 */
-    max-width: 600px; /* 添加最大宽度限制 */
-}
-
-.progress {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: #00ff88;
-    border-radius: 12px;
-    width: 0;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
-}
-
-.time {
-    color: #fff;
-    font-size: 3rem; /* 增大时间显示 */
-    min-width: 120px;
-    text-align: right;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-/* 播放状态样式 */
-.playing .play-icon {
-    background: #ff0088;
-    box-shadow: 0 0 15px rgba(255, 0, 136, 0.5);
-}
-
-.playing .play-icon::before {
-    content: "⏸";
-}
-
-/* 页脚样式 */
+/*||上面是互动游戏板块样式||*/
+/*||下面是页脚样式||*/
 footer {
     width: 100%;
-    padding: 3rem 0;
+    padding: 0.8rem 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     text-align: center;
     margin-top: 6rem;
@@ -613,12 +641,13 @@ footer {
 
 footer p {
     font-family: 'Arial', sans-serif; /* 可以换成其他现代字体 */
-    font-size: 2.5rem;
+    font-size: 1rem;
     color: #ffffff;
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
+/*||上面是页脚样式||*/
 
 /* 响应式设计修改 */
 @media (max-width: 768px) {
@@ -704,5 +733,71 @@ footer p {
     100% {
         transform: translate(0, 0);
         opacity: 1;
+    }
+}
+
+@keyframes slideBackground {
+    0% {
+        background-position: 0 0, 0 0, 100% 0, 200% 0;
+    }
+    100% {
+        background-position: 0 0, -100% 0, 0 0, 100% 0;
+    }
+}
+
+@keyframes switchBackground {
+    0%, 11% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    12.5%, 23.5% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b2.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    24.5%, 36% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b3.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    37%, 48.5% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b4.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    49.5%, 61% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b5.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    62%, 73.5% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b6.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    74.5%, 86% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b7.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    87%, 99.9% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b8.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    100% {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url('./images/b1.jpg');
+        background-size: cover;
+        background-position: center;
     }
 }
