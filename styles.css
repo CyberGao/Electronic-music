@@ -1,4 +1,3 @@
-/* 全局样式修改 */
 * {
     margin: 0;
     padding: 0;
@@ -7,69 +6,66 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.8;
+    line-height: 1.5;
     background-color: #121212;
     color: #ffffff;
-    font-size: 16px; /* 增大基础字体大小 */
+    font-size: 4px; 
     width: 100%;
+    padding-top: 0.5rem;
 }
 
-/* 导航栏样式修改 */
+/*||下面是导航栏样式||*/
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 2rem 0; /* 增加padding */
-    z-index: 1000; /* 确保导航栏在最上层 */
+    padding: 0.5rem 0; /*增加padding*/
+    z-index: 1000; /*确保导航栏在最上层*/
 }
 
 .nav-container {
-    width: 90%; /* 修改为百分比宽度 */
+    width: 90%; /*修改为百分比宽度*/
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 0.5rem;
 }
 
-
+/*左上角logo“电子音乐世界”*/
 .logo {
     color: #00ff88;
-    font-size: 8rem; /* 增大logo字体 */
+    font-size: 2rem; 
 }
 
+/*右侧板块导航“音乐起源、经典乐器、著名歌手、互动游戏”*/
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    margin-left: 2rem;
-    font-size: 5rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
     transition: color 0.3s ease, font-size 0.3s ease;
-    /* 添加 padding 来扩大可点击区域 */
-    padding: 1rem 2rem;
-    /* 添加块级特性使 padding 生效 */
+    /*添加padding扩大可点击区域*/
+    padding: 0.5rem 1rem;
+    /*添加块级特性使padding生效*/
     display: inline;
-    /* 添加圆角效果让悬停区域更明显 */
+    /*添加圆角效果让悬停区域更明显*/
     border-radius: 0.5rem;
 }
 
 .nav-links a:hover {
     color: #00ff88;
-    font-size: 4rem;
-    /* 可以添加背景色让悬停区域更明显 */
+    font-size: 1.8rem;
+    /*添加背景色让悬停区域更明显*/
     background-color: rgba(0, 255, 136, 0.1);
 }
-
-/* 为了防止导航栏遮挡内容 */
-body {
-    padding-top: 10rem; /* 确保内容不被导航栏遮挡 */
-}
-
-/* 主页横幅样式修改 */
+/*||上面是导航栏样式||*/
+/*||下面是主页样式||*/
 .hero {
     height: 95vh;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/hero-bg.jpg'); /* 修改图片路径 */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/hero-bg.jpg'); 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -79,50 +75,174 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 10rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
     color: #00ff88;
-    /* 标题从左上角飞入 */
+    /*标题从左上角飞入*/
     animation: flyInTitle 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    /* 初始状态设为不可见 */
+    /*初始状态设为不可见*/
     opacity: 0;
 }
 
 .hero-content p {
-    font-size: 8rem;
+    font-size: 2rem;
     color: #ffffff;
-    /* 描述文字从右下角飞入 */
+    /*描述文字从右下角飞入*/
     animation: flyInDesc 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    /* 初始状态设为不可见 */
+    /*初始状态设为不可见*/
     opacity: 0;
 }
-
-/* 章节通用样式修改 */
+/*||上面是主页样式||*/
+/*||下面是通用板块样式||*/
 .section {
-    padding: 5rem 2rem;
-    width: 90%; /* 修改为百分比宽度 */
+    padding: 4rem 8rem;
+    width: 90%; 
     margin: 0 auto;
 }
 
 .section h2 {
     text-align: center;
     color: #00ff88;
-    margin-bottom: 3rem;
-    font-size: 8rem; /* 增大标题字体 */
+    margin-bottom: 1.5rem;
+    font-size: 3rem; 
 }
 
-/* 文本内容样式 */
-
+/*文本内容样式*/
 .section p {
-    font-size: 5rem; /* 从4rem增加到6rem */
+    font-size: 1.5rem; 
     color: #ffffff;
-    margin-bottom: 3rem;
-    line-height: 1.8; /* 增加行高，提高可读性 */
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
     text-align: justify;
-    letter-spacing: 0.1rem; /* 添加字间距 */
+    letter-spacing: 0.1rem; 
+}
+/*||上面是通用板块样式||*/
+/*||下面是时间线板块样式||*/
+.timeline-section {
+    padding: 1rem;
+    position: relative;
 }
 
-/* 乐器展示标题 */
+.timeline-title {
+    font-size: 1rem;
+    color: #00ff88;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    max-width: 4000px;
+    margin: 0 auto;
+}
+
+/*时间线垂直线*/
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background: #00ff88;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+    box-shadow: 0 0 7.5px rgba(0, 255, 136, 0.5);
+}
+
+.timeline-item {
+    padding: 2rem 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.timeline-content {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5rem;
+    border: 1px solid #00ff88;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+/*修改左右交替布局，增加与时间轴的距离*/
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 55%; /*增加右边距，让左边的框更靠左*/
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 55%; /*增加左边距，让右边的框更靠右*/
+}
+
+/*添加连接线，连接内容框和时间点*/
+.timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    right: -11%;
+    top: 1rem;
+    width: 11%;
+    height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    content: '';
+    position: absolute;
+    left: -11%;
+    top: 1rem;
+    width: 11%;
+    height: 2px;
+    background: #00ff88;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+/*时间点圆圈*/
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #00ff88;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3rem;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+}
+
+.period-title {
+    color: #00ff88;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-content li {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.timeline-content li::before {
+    content: '•';
+    color: #00ff88;
+    position: absolute;
+    left: 0;
+}
+/*||上面是时间线板块样式||*/
+
+/*||下面是经典乐器板块样式||*/
+/*乐器展示标题*/
 #instrument-showcase h3 {
     text-align: center;
     color: #00ff88;
@@ -268,7 +388,14 @@ body {
 
 /* 如果需要调整作品区域内容的位置 */
 .artist-works h4 {
-    margin-left: 2rem;  /* 标题距离竖线的距离 */
+    font-size: 5rem;  /* 设置字体大小 */
+    color: #ffffff;   /* 设置颜色为霓虹绿 */
+    margin-bottom: 3rem;  /* 下方间距 */
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);  /* 霓虹发光效果 */
+    font-weight: 600;  /* 字体粗细 */
+    letter-spacing: 0.2rem;  /* 字间距 */
+    text-transform: uppercase;  /* 可选：转换为大写 */
+    font-family: 'Arial', sans-serif;  /* 字体家族 */
 }
 
 .music-player-container {
@@ -285,8 +412,6 @@ body {
     font-size: 4rem; /* 增大列表项字体 */
 }
 
-
-/* 游戏部分样式修改 */
 /* 视频部分整体样式 */
 #interactive {
     padding: 6rem 0;
@@ -474,129 +599,6 @@ body {
 
 .playing .play-icon::before {
     content: "⏸";
-}
-/*时间线*/
-.timeline-section {
-    padding: 4rem;
-    position: relative;
-}
-
-.timeline-title {
-    font-size: 4rem;
-    color: #00ff88;
-    margin-bottom: 4rem;
-    text-align: center;
-}
-
-.timeline {
-    position: relative;
-    max-width: 4000px;
-    margin: 0 auto;
-}
-
-/* 时间线垂直线 */
-.timeline::before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background: #00ff88;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -3px;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-}
-
-.timeline-item {
-    padding: 2rem 0;
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.timeline-content {
-    position: relative;
-    width: 70%;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 1rem;
-    border: 2px solid #00ff88;
-    font-size: 4rem;
-    color: #ffffff;
-}
-
-/* 修改左右交替布局，增加与时间轴的距离 */
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-right: 55%; /* 增加右边距，让左边的框更靠左 */
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: 55%; /* 增加左边距，让右边的框更靠右 */
-}
-
-/* 添加连接线，连接内容框和时间点 */
-.timeline-item:nth-child(odd) .timeline-content::after {
-    content: '';
-    position: absolute;
-    right: -11%;
-    top: 1.5rem;
-    width: 11%;
-    height: 2px;
-    background: #00ff88;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
-.timeline-item:nth-child(even) .timeline-content::after {
-    content: '';
-    position: absolute;
-    left: -11%;
-    top: 1.5rem;
-    width: 11%;
-    height: 2px;
-    background: #00ff88;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
-/* 时间点圆圈 */
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #00ff88;
-    border-radius: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 3rem;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
-}
-
-/* 其他样式保持不变 */
-.period-title {
-    color: #00ff88;
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
-}
-
-.timeline-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.timeline-content li {
-    margin-bottom: 2rem;
-    line-height: 1.4;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline-content li::before {
-    content: '•';
-    color: #00ff88;
-    position: absolute;
-    left: 0;
 }
 
 /* 页脚样式 */
