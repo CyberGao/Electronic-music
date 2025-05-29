@@ -39,6 +39,11 @@ body {
     font-size: 2rem; 
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
 /*右侧板块导航“音乐起源、经典乐器、著名歌手、互动游戏”*/
 .nav-links a {
     color: #ffffff;
@@ -54,12 +59,146 @@ body {
     border-radius: 0.5rem;
 }
 
+/* 区分登录注册按钮 */
+#auth-trigger {
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-left: 2rem;
+    background-color: rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 鼠标悬停时去掉放大效果 */
+#auth-trigger:hover {
+    background-color: rgba(0, 255, 136, 0.3);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;  /* 覆盖 nav-links a:hover 的放大字体 */
+}
+
+
 .nav-links a:hover {
     color: #00ff88;
     font-size: 1.8rem;
     /*添加背景色让悬停区域更明显*/
     background-color: rgba(0, 255, 136, 0.1);
 }
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000; /* 确保这个值大于导航栏的 z-index */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: rgba(18, 18, 18, 0.95);
+    margin: 15% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+/* 关闭按钮 */
+.close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    font-size: 2rem;
+    color: #00ff88;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff0088;
+    transform: rotate(90deg);
+}
+
+/* 切换按钮 */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background: #00ff88;
+    color: #121212;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* 表单样式 */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.submit-btn {
+    background: #00ff88;
+    color: #121212;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #00cc6a;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
 /*||上面是导航栏样式||*/
 /*||下面是主页样式||*/
 .hero {

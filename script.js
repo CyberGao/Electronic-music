@@ -1,3 +1,4 @@
+
 class MusicPlayer {
     constructor() {
         this.currentAudio = null;
@@ -14,24 +15,19 @@ class MusicPlayer {
                 this.handlePlayClick(button);
             });
 
-            // 为每个按钮创建对应的音频元素
             const songId = button.getAttribute('data-song');
             const audio = new Audio(`music/${songId}.mp3`);
-            
-            // 保存音频元素引用
             button.audio = audio;
-            
-            // 进度条更新
+
             const progressBar = button.parentElement.querySelector('.progress');
             const timeDisplay = button.parentElement.querySelector('.time');
-            
+
             audio.addEventListener('timeupdate', () => {
                 const progress = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = `${progress}%`;
                 timeDisplay.textContent = this.formatTime(audio.currentTime);
             });
-            
-            // 播放结束时重置
+
             audio.addEventListener('ended', () => {
                 this.resetPlayButton(button);
                 progressBar.style.width = '0%';
@@ -39,7 +35,6 @@ class MusicPlayer {
             });
         });
 
-        // 为进度条添加点击事件
         document.querySelectorAll('.progress-bar').forEach(bar => {
             bar.addEventListener('click', (e) => {
                 const button = bar.parentElement.querySelector('.play-btn');
@@ -54,14 +49,12 @@ class MusicPlayer {
 
     handlePlayClick(button) {
         if (this.currentButton === button) {
-            // 点击同一首歌
             if (this.isPlaying) {
                 this.pauseMusic();
             } else {
                 this.playMusic(button);
             }
         } else {
-            // 切换到新的歌
             if (this.currentButton) {
                 this.resetPlayButton(this.currentButton);
                 this.currentButton.audio.pause();
@@ -101,41 +94,80 @@ class MusicPlayer {
     }
 }
 
-// 初始化播放器
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     new MusicPlayer();
-});
 
-// 平滑滚动效果
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
 
-// 导航栏滚动效果
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-    }
-});
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.background = window.scrollY > 50 ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0.9)';
+    });
 
-// 游戏按钮点击事件
-document.getElementById('startGame').addEventListener('click', function() {
-    // 这里替换为你的游戏URL
-    window.location.href = '/Electronic-music/game.html';
-});
+    const modal = document.getElementById('auth-modal');
+    const authButton = document.getElementById('auth-trigger');
+    const closeBtn = document.querySelector('.close-btn');
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
 
-// 添加页面加载动画效果
-document.addEventListener('DOMContentLoaded', function() {
+    authButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const formToShow = this.getAttribute('data-form');
+            if (formToShow === 'login-form') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            }
+        });
+    });
+
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = this.querySelector('input[type="text"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        console.log('登录:', { username, password });
+    });
+
+    registerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = this.querySelector('input[type="text"]').value;
+        const passwords = this.querySelectorAll('input[type="password"]');
+        if (passwords[0].value !== passwords[1].value) {
+            alert('两次密码不一致！');
+            return;
+        }
+        console.log('注册:', { username, password: passwords[0].value });
+    });
+
     const sections = document.querySelectorAll('.section');
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -150,19 +182,5 @@ document.addEventListener('DOMContentLoaded', function() {
         section.style.transform = 'translateY(20px)';
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(section);
-    });
-});
-
-// 音乐播放功能
-document.querySelectorAll('.play-btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const songId = this.getAttribute('data-song');
-        // 这里添加音乐播放逻辑
-        // 例如：
-        console.log(`Playing song: ${songId}`);
-        // 可以通过 Audio API 来实现音乐播放
-        // const audio = new Audio(`./music/${songId}.mp3`);
-        // audio.play();
     });
 });
