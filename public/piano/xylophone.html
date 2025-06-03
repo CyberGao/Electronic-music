@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>木琴演奏</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #auth-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .modal-content {
+            background: white;
+            color: black;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        .hidden { display: none; }
+        .toggle-btn.active { font-weight: bold; }
+    </style>
+</head>
+
+<body>
+    <h1>🎵 点击琴键或按键盘演奏 🎹</h1>
+    <h2>按 Shift 和 Control 键来调整音调</h2>
+
+    <button id="auth-trigger">🔑 登录 / 注册</button>
+    <span id="user-name"></span>
+
+    <div class="xylophone">
+        <div class="key" id="C" data-key="C">do(a)</div>
+        <div class="key" id="D" data-key="D">re(s)</div>
+        <div class="key" id="E" data-key="E">mi(d)</div>
+        <div class="key" id="F" data-key="F">fa(j)</div>
+        <div class="key" id="G" data-key="G">sol(k)</div>
+        <div class="key" id="A" data-key="A">la(l)</div>
+        <div class="key" id="B" data-key="B">si(;)</div>
+    </div>
+
+    <br><br>
+    <div class="button-group" style="margin: 20px 0;">
+  <button id="record-btn">🎤 录制</button>
+  <button id="upload-btn" onclick="uploadRecording()" disabled>⬆️ 上传录音</button>
+  <button id="download-all-btn" disabled>⬇️ 下载我的全部音频</button>
+</div>
+
+    <span id="record-time">00:00</span>
+    <!-- ❌ 删除原下载录音链接 -->
+    <!-- <a id="download-link" style="display: none"></a> -->
+
+    <br><br>
+    <!-- 状态区域 -->
+    <div id="status-area" style="margin-top: 10px; color: yellow;"></div>
+
+    <!-- 登录注册模态框 -->
+    <div id="auth-modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <div>
+                <button class="toggle-btn active" data-form="login-form">登录</button>
+                <button class="toggle-btn" data-form="register-form">注册</button>
+            </div>
+            <form id="login-form">
+                <input type="text" placeholder="用户名"><br>
+                <input type="password" placeholder="密码"><br>
+                <button type="submit">登录</button>
+            </form>
+            <form id="register-form" class="hidden">
+                <input type="text" placeholder="用户名"><br>
+                <input type="password" placeholder="密码"><br>
+                <input type="password" placeholder="确认密码"><br>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="xylo.js"></script>
+</body>
+</html>

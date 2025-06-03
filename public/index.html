@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>E—Music</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<!-- AI悬浮球 -->
+<div id="ai-float-ball" class="ai-float-ball">
+    <div class="ball-icon">🤖</div>
+</div>
+
+<!-- AI对话窗口 -->
+<div id="ai-chat-modal" class="ai-chat-modal">
+    <div class="chat-content">
+        <div class="chat-header">
+            <span>AI 助手</span>
+            <span class="chat-close-btn">×</span>
+        </div>
+        <div id="chat-messages" class="chat-messages"></div>
+        <div class="chat-input-area">
+            <textarea id="chat-input" placeholder="输入消息..."></textarea>
+            <button id="send-message">发送</button>
+        </div>
+    </div>
+</div>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">电子音乐世界</h1>
+            <div class="nav-links">
+                <a href="#history">音乐起源</a>
+                <a href="#instrument-showcase">经典乐器</a>
+                <a href="#artists">著名歌手</a>
+                <a href="#interactive">互动游戏</a>
+                <a href="#login" id="auth-trigger">登录/注册</a>
+            
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页横幅 -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>探索电子音乐的魅力</h1>
+            <p>让我们一起深入了解电子音乐的世界</p>
+        </div>
+    </header>
+
+    <section id="history" class="section">
+        <h2 class="section-title">音乐起源</h2>
+        
+        <!-- 简介部分 -->
+        <p class="intro-text">电子音乐（Electronic Music）是一种使用电子技术和设备创作的音乐流派，涵盖了从实验性电子合成到流行电子舞曲（EDM）的广泛范围。</p>
+        <p class="intro-text">它的起源可以追溯到20世纪初，但真正发展始于20世纪50年代，随着合成器和计算机技术的进步，电子音乐逐步成为音乐界的重要组成部分。</p>
+    
+        <!-- 时间线部分 -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="period-title">早期实验（20世纪初-1950年代）</div>
+                    <ul>
+                        <li>1910年代，意大利未来主义作曲家鲁易吉·鲁索洛（Luigi Russolo）提出"噪音音乐"（The Art of Noises），尝试使用机械装置制造新声音。</li>
+                        <li>1920年，俄国发明家列夫·特尔门（Léon Theremin）发明了世界上第一台电子乐器——特雷门琴（Theremin）。</li>
+                        <li>1948年，法国作曲家皮埃尔·舍费尔（Pierre Schaeffer）提出"具体音乐"（Musique Concrète），利用磁带剪辑自然声音进行创作。</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="period-title">模拟合成器时代（1960-1970年代）</div>
+                    <ul>
+                        <li>1960年代，罗伯特·穆格（Robert Moog）发明了Moog合成器，标志着电子音乐进入合成器时代。</li>
+                        <li>1970年代，德国乐队Kraftwerk（"电子音乐鼻祖"）开创了电子流派，使电子音乐从实验性走向流行。</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="period-title">数字时代（1980年代-1990年代）</div>
+                    <ul>
+                        <li>1980年代，MIDI技术（Musical Instrument Digital Interface）标准化，使不同品牌的电子乐器可以连接使用。</li>
+                        <li>1990年代，Techno、House、Trance等电子舞曲风格兴起，电子音乐进入全球流行阶段。</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="period-title">现代电子音乐（2000年代至今）</div>
+                    <ul>
+                        <li>电子舞曲（EDM）成为主流音乐，知名DJ如David Guetta、Calvin Harris等将电子音乐推向流行市场。</li>
+                        <li>AI与电子音乐结合，人工智能生成音乐成为新趋势。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+
+    <!-- 经典乐器部分 -->
+    <section id="instrument-showcase">
+        <h3>经典乐器</h3>
+
+        <div class="instruments">
+            <div class="instrument">
+                <a href="https://en.wikipedia.org/wiki/Theremin" target="_blank">
+                    <img src="./images/theremin.jpg" alt="特雷门琴">
+                </a>
+                <p class="feature">Theremin（特雷门琴）</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Léon Theremin</p>
+                    <p class="feature">特点：通过手部移动控制音高和音量，无需触碰</p>
+                </div>
+            </div>
+            <div class="instrument">
+                <a href="https://en.wikipedia.org/wiki/Moog_synthesizer" target="_blank">
+                    <img src="./images/moog.jpg" alt="穆格合成器">
+                </a>
+                <p class="feature">Moog Synthesizer</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Robert Moog</p>
+                    <p class="feature">特点：早期模拟合成器，推动电子音乐发展</p>
+                </div>
+            </div>
+            <div class="instrument">
+                <a href="https://intro.novationmusic.com/future-house-fusion" target="_blank">
+                    <img src="./images/tr808.jpg" alt="Roland TR-808">
+                </a>
+                <p class="feature">Roland TR-808</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Roland公司</p>
+                    <p class="feature">特点：电子鼓机，影响了Hip-Hop、House、Techno</p>
+                </div>
+            </div>
+            <div class="instrument">
+                <a href="https://en.wikipedia.org/wiki/Roland_TB-303" target="_blank">
+                    <img src="./images/tb303.jpg" alt="Roland TB-303">
+                </a>
+                <p class="feature">Roland TB-303</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Roland公司</p>
+                    <p class="feature">特点：Acid House的标志性贝斯合成器</p>
+                </div>
+            </div>
+            <div class="instrument">
+                <a href="https://danziger.github.io/stylophonejs/" target="_blank">
+                    <img src="./images/dx7.jpg" alt="Yamaha DX7">
+                </a>
+                <p class="feature">Yamaha DX7</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Yamaha公司</p>
+                    <p class="feature">特点：80年代流行音乐的FM合成器</p>
+                </div>
+            </div>
+            <div class="instrument">
+                <a href="https://en.wikipedia.org/wiki/Korg_MS-20" target="_blank">
+                    <img src="./images/ms20.jpg" alt="Korg MS-20">
+                </a>
+                <p class="feature">Korg MS-20</p>
+                <div class="instrument-info">
+                    <p class="inventor">发明者：Korg公司</p>
+                    <p class="feature">特点：经典半模块化合成器，用于Techno、Industrial</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 著名歌手部分 -->
+<section id="artists" class="section">
+    <h2>著名电子音乐人</h2>
+    <div class="artists-container">
+        <!-- Avicii -->
+        <div class="artist-row">
+            <div class="artist-image">
+                <img src="./images/avicii.jpg" alt="Avicii">
+            </div>
+            <div class="artist-info">
+                <h3 class="artist-name">Avicii（艾维奇）</h3>
+                <div class="artist-details">
+                    <p><span>本名：</span>Tim Bergling</p>
+                    <p><span>国籍：</span>瑞典</p>
+                    <p><span>出生/去世：</span>1989年9月8日 – 2018年4月20日</p>
+                    <p><span>风格：</span>Progressive House、Electro House、EDM、Folk融合</p>
+                </div>
+            </div>
+            <div class="artist-works">
+                <h4>代表作品</h4>
+                <div class="music-player-container">
+                    <ul class="song-list">
+                        <li>
+                            <a href="#" class="play-btn" data-song="waiting-for-love">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Waiting For Love</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="the-days">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">The Days</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="the-nights">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">The Nights</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 其他歌手按相同格式添加 -->
+         <!-- Martin Garrix -->
+        <div class="artist-row">
+            <div class="artist-image">
+                <img src="./images/Martin-Garrix.jpg" alt="Martin-Garrix">
+            </div>
+            <div class="artist-info">
+                <h3 class="artist-name">Martin Garrix（小马丁）</h3>
+                <div class="artist-details">
+                    <p><span>本名：</span>Martijn Gerard Garritsen</p>
+                    <p><span>国籍：</span>荷兰</p>
+                    <p><span>出生/去世：</span>1996年5月14日 – </p>
+                    <p><span>风格：</span>Big Room House、Progressive House、Future Bass</p>
+                </div>
+            </div>
+            <div class="artist-works">
+                <h4>代表作品</h4>
+                <div class="music-player-container">
+                    <ul class="song-list">
+                        <li>
+                            <a href="#" class="play-btn" data-song="animals">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Animals</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="there-for-you">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">There For You</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="high-on-life">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">High On Life</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+         <!-- Alan-Walker -->
+        <div class="artist-row">
+            <div class="artist-image">
+                <img src="./images/Alan-Walker.jpg" alt="Alan-Walker">
+            </div>
+            <div class="artist-info">
+                <h3 class="artist-name"> Alan Walker（艾伦·沃克）</h3>
+                <div class="artist-details">
+                    <p><span>本名：</span>Alan Olav Walker</p>
+                    <p><span>国籍：</span>挪威 / 英国</p>
+                    <p><span>出生/去世：</span>1997年8月24日 – </p>
+                    <p><span>风格：</span>Electro House、Progressive House、Future House</p>
+                </div>
+            </div>
+            <div class="artist-works">
+                <h4>代表作品</h4>
+                <div class="music-player-container">
+                    <ul class="song-list">
+                        <li>
+                            <a href="#" class="play-btn" data-song="fade">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Fade</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="the-spectre">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">The Spectre</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="alone-alan">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Alone</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+         <!--  The Chainsmokers -->
+         <div class="artist-row">
+            <div class="artist-image">
+                <img src="./images/The-Chainsmokers.jpg" alt=" The-Chainsmokers">
+            </div>
+            <div class="artist-info">
+                <h3 class="artist-name"> The Chainsmokers（烟鬼）</h3>
+                <div class="artist-details">
+                    <p><span>成员：</span>Andrew Taggart & Alex Pall</p>
+                    <p><span>国籍：</span>美国</p>
+                    <p><span>风格：</span>Electropop、Future Bass、Indie Pop、EDM</p>
+                </div>
+            </div>
+            <div class="artist-works">
+                <h4>代表作品</h4>
+                <div class="music-player-container">
+                    <ul class="song-list">
+                        <li>
+                            <a href="#" class="play-btn" data-song="something-just-like-this">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Something Just Like This</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="closer">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Closer</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="paris">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Paris</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+         <!-- Marshmello -->
+         <div class="artist-row">
+            <div class="artist-image">
+                <img src="./images/Marshmello.jpg" alt="Marshmello">
+            </div>
+            <div class="artist-info">
+                <h3 class="artist-name"> Marshmello（棉花糖）</h3>
+                <div class="artist-details">
+                    <p><span>本名：</span>Christopher Comstock（也被认为是Dotcom）</p>
+                    <p><span>国籍：</span>美国</p>
+                    <p><span>出生/去世：</span>1992年5月19日 – </p>
+                    <p><span>风格：</span>Future Bass、Trap、Progressive House、Pop EDM</p>
+                </div>
+            </div>
+            <div class="artist-works">
+                <p>代表作品</p>
+                <div class="music-player-container">
+                    <ul class="song-list">
+                        <li>
+                            <a href="#" class="play-btn" data-song="wolves">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Wolves</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="alone">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Alone</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="play-btn" data-song="silence">
+                                <span class="play-icon">▶</span>
+                                <span class="song-title">Silence</span>
+                            </a>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="time">0:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- 视频互动部分 -->
+<section id="interactive" class="section">
+    <h2>互动体验</h2>
+    <div class="video-container">
+        <!-- 左侧视频 -->
+        <div class="video-card">
+            <a href="./dddddd/index.html" class="video-link">
+                <video class="background-video" autoplay loop muted playsinline>
+                    <source src="./videos/electronic-music-game.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <h3>节奏大师</h3>
+                    <p>体验电子音乐节奏游戏</p>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 右侧视频 -->
+        <div class="video-card">
+            <a href="./piano/xylophone.html" class="video-link">
+                <video class="background-video" autoplay loop muted playsinline>
+                    <source src="./videos/music-creation.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <h3>音乐创作</h3>
+                    <p>创作你的电子音乐</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 登录/注册弹窗 -->
+<div class="modal" id="auth-modal">
+    <div class="modal-content">
+        <!-- 关闭按钮 -->
+        <span class="close-btn">&times;</span>
+        
+        <!-- 切换按钮 -->
+        <div class="toggle-buttons">
+            <button class="toggle-btn active" data-form="login-form">登录</button>
+            <button class="toggle-btn" data-form="register-form">注册</button>
+        </div>
+
+        <!-- 登录表单 -->
+        <form id="login-form" class="auth-form">
+            <div class="form-group">
+                <input type="text" placeholder="用户名" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="密码" required>
+            </div>
+            <button type="submit" class="submit-btn">登录</button>
+        </form>
+
+        <!-- 注册表单 -->
+        <form id="register-form" class="auth-form hidden">
+            <div class="form-group">
+                <input type="text" placeholder="设置用户名" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="设置密码" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="确认密码" required>
+            </div>
+            <button type="submit" class="submit-btn">注册</button>
+        </form>
+    </div>
+</div>
+
+    <footer>
+        <p>&copy; 2025 World of Electronic Music. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
